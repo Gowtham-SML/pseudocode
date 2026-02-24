@@ -1,0 +1,34 @@
+CheckoutPriceCalcultion(cartItems,shipping,discount,tax)
+
+subTotal=0
+for each cartitems
+subtotal=subTotal(itemPrice*itemQuqntity)
+end for
+
+if shipping==normal
+then shippingCost=costForNormal
+if shipping==fast
+then shippingcost==costForFast
+
+discountCost=0
+if discountType==percentage
+then discountCost=subTotal*(discountValue/100)
+    if discountCost>discountCap
+    then discountCost=discountCap
+if discountType==fixed
+then discountCost=fixedDiscount
+
+taxCost=0
+if region==india
+then taxableAmount=subTotal-discountCost 
+    taxCost=taxableAmount*(taxValueOfIndia/100)
+if region==japan
+then taxableAmount=subTotal-discountCost 
+    taxCost=taxableAmount*(taxValueOfJapan/100)
+
+finalTotal=0
+finalTotal=(subTotal-discountCost)+taxCost+shippingCost
+
+if finalTotal<=0
+then finalTotal=0
+return finalTotal

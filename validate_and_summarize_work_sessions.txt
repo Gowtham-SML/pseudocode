@@ -1,0 +1,29 @@
+validateAndSummarizeWorkSessions(sessions)
+isValid = true
+time = 0
+count = length of sessions
+
+for i from 0 to count-1 
+if startTimeOfSession[i] > endtimeOfSession[i] OR startTimeOfSession[i] < 0 OR endTimeOfSession[i] > 1439 
+then print 
+{
+    isValid=false
+errorMessage: "Overlapping sessions"
+}
+return
+
+if i<count-1 && endTimeofSession[i] > startTimeOfSession[i+1]
+then print{
+    isValid=false
+errorMessage: "Overlapping sessions"
+}
+return
+
+time=time+(endTimeOfSession[i]-startTimeOfSession[i])
+end for
+
+print {
+    isvalid=true
+    totalMinutesWorked: time
+    sessionCount: count
+    }
