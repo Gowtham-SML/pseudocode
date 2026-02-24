@@ -1,0 +1,20 @@
+1) read all items in the cart
+if items>=1 then proceed to validate quantities
+
+2) validate quantities against inventory
+for each items in cart
+if item<=stock then stock is available 
+end for
+
+3) validate prices against the latest catlog
+for each items in cart
+if prices == catlog_prices then price matched
+end for
+
+4) collect validation errors
+if items == 0 then checkout=false
+for each items in cart
+if item>stock || prices != catlog_prices 
+then checkout=false
+if items >= 1 && item<=stock && prices == catlog_prices
+then checkout=true
