@@ -1,0 +1,27 @@
+for each item in cartItems
+    if item.quantity <= 0
+    then
+        return
+    end if
+
+    if item.quantity > inventory[item.id].availableStock
+    then
+        print "Insufficient stock for item "
+        return
+    end if
+
+end for
+
+for each item in cartItems
+    inventory[item.id].availableStock = inventory[item.id].availableStock - item.quantity
+end for
+
+startTime = currentTime
+expiryTime = startTime + reservationDuration
+
+if currentTime > expiryTime
+then
+    for each item in cartItems
+        inventory[item.id].availableStock = inventory[item.id].availableStock + item.quantity
+    end for
+end if
